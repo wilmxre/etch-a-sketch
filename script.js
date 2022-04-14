@@ -14,6 +14,13 @@ for (let i = 0; i < gridSize; i++) {
 
 container.appendChild(squares);
 
-Array.from(squares.childNodes).forEach(element => {
-  element.addEventListener('click', (e) => e.target.style = 'background-color: red;');
+squares.childNodes.forEach(element => {
+  element.addEventListener('mouseover', (e) => e.target.style = 'background-color: red;');
 });
+
+const clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', () => {
+  squares.childNodes.forEach(element => {
+    element.style = 'background-color: white;';
+  })
+})

@@ -35,6 +35,7 @@ let clearAndResize = () => {
 
   gridSize = parseInt(prompt('Enter the size of your new canvas!'));
   squares.textContent = '';
+  container.style = `--size: ${gridSize}`;
   generateSquares(gridSize);
 }
 

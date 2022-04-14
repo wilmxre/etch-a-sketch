@@ -6,13 +6,17 @@ let gridSize = 16;
 
 let generateSquares = (size) => {
   for (let i = 0; i < size; i++) {
+    const squareRow = document.createElement('div');
+    squareRow.classList.add('square-row', `square-row-${i + 1}`);
     for (let j = 0; j < size; j++) {
       const square = document.createElement('div');
       square.classList.add('square');
       square.setAttribute('id', `itm-${i + 1}-by-${j + 1}`)
-      squares.appendChild(square);
+      squareRow.appendChild(square);
     }
+    squares.append(squareRow);
   }
+
 
   return squares;
 }
@@ -25,7 +29,6 @@ squares.childNodes.forEach(element => {
 
 const clearBtn = document.querySelector('#clear');
 let clearAndResize = () => {
-  console.log(1);
   squares.childNodes.forEach(element => {
     element.style = 'background-color: white;';
   });

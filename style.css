@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  --contentSize: 800px;
+  --contentSize: 80vh;
   --size: 16;
 }
 
@@ -32,12 +32,30 @@ body {
   max-width: var(--contentSize);
   max-height: var(--contentSize);
   box-sizing: content-box;
-  border: 4px solid black;
+  border: 4px solid #000000;
   border-radius: 4px;
 }
 
 .square {
   width: calc(var(--contentSize)/var(--size));
   height: calc(var(--contentSize)/var(--size));
-  border: 1px solid black;
+  border: 1px solid #000000;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    --contentSize: 60vh;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    --contentSize: 50vh;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .container {
+    --contentSize: 80vw;
+  }
 }

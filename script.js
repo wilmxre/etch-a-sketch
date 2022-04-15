@@ -23,7 +23,17 @@ let generateSquares = (size) => {
 
 let fillWithColor = (color) => {
   squares.childNodes.forEach(element => {
-    element.addEventListener('mouseover', (e) => e.target.style = `background-color: ${color};`);
+    let bgColor = '';
+    let add = 51;
+    let addHex = '';
+
+    element.addEventListener('mouseover', (e) => {
+      addHex = add.toString(16);
+      bgColor = color.concat(addHex);
+      e.target.style = `background-color: ${bgColor};`;
+      if (add < 255) add += 51;
+    });
+
   });
 }
 
@@ -50,7 +60,6 @@ let resizeSketchpad = () => {
   squares.textContent = '';
   container.style = `--size: ${gridSize}`;
   generateSquares(gridSize);
-  colorPicker.value = '#363062';
   setColor();
 }
 
@@ -62,8 +71,8 @@ window.onload = () => {
   container.appendChild(generateSquares(gridSize));
   setColor();
   removeColor();
-  colorPicker.addEventListener("input", setColor);
 
+  colorPicker.addEventListener("input", setColor);
   clearBtn.addEventListener('click', clearSketchpad);
   resizeBtn.addEventListener('click', resizeSketchpad);
 }

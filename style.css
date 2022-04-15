@@ -15,7 +15,8 @@ body {
   display: flex;
 }
 
-#clear {
+#clear,
+#resize {
   margin: 1rem;
   width: 8rem;
   height: 1.5rem;
@@ -34,11 +35,13 @@ body {
   flex-wrap: wrap;
   max-width: var(--contentSize);
   max-height: var(--contentSize);
-  /* border: 2px solid black; */
+  box-sizing: content-box;
+  border: 4px solid black;
+  border-radius: 4px;
 }
 
-.square-row .square {
+.square {
   width: calc(var(--contentSize)/var(--size));
   height: calc(var(--contentSize)/var(--size));
-  border: 2px solid black;
+  border: 1px solid black;
 }

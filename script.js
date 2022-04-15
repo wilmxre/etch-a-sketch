@@ -3,8 +3,10 @@ const squares = document.createElement('div');
 squares.classList.add('squares');
 const clearBtn = document.querySelector('#clear');
 const resizeBtn = document.querySelector('#resize');
+const colorPicker = document.getElementById("colorPicker");
 
 let gridSize = 16;
+let option = 'mouseover';
 
 let generateSquares = (size) => {
   for (let i = 0; i < size; i++) {
@@ -19,9 +21,15 @@ let generateSquares = (size) => {
   return squares;
 }
 
-let fillWithColor = () => {
+let fillWithColor = (color) => {
   squares.childNodes.forEach(element => {
-    element.addEventListener('mouseover', (e) => e.target.style = 'background-color: red;');
+    element.addEventListener('mouseover', (e) => e.target.style = `background-color: ${color};`);
+  });
+}
+
+let removeColor = () => {
+  squares.childNodes.forEach(element => {
+    element.addEventListener('dblclick', (e) => e.target.style = 'background-color: white;');
   });
 }
 
@@ -32,18 +40,30 @@ let clearSketchpad = () => {
 }
 
 let resizeSketchpad = () => {
-  gridSize = parseInt(prompt('Enter the size of your new canvas!'));
+  while (true) {
+    gridSize = parseInt(prompt('Enter the size of your new canvas! (1 to 100)'));
+    if (isNaN(gridSize) || gridSize <= 0 || gridSize > 100) {
+      alert("You didn't enter a valid number!");
+    }
+    else break;
+  }
   squares.textContent = '';
   container.style = `--size: ${gridSize}`;
   generateSquares(gridSize);
-  fillWithColor();
+  colorPicker.value = '#363062';
+  setColor();
+}
+
+function setColor() {
+  fillWithColor(colorPicker.value);
 }
 
 window.onload = () => {
   container.appendChild(generateSquares(gridSize));
-  fillWithColor();
+  setColor();
+  removeColor();
+  colorPicker.addEventListener("input", setColor);
+
   clearBtn.addEventListener('click', clearSketchpad);
   resizeBtn.addEventListener('click', resizeSketchpad);
 }
-
-console.log(squares.childNodes)

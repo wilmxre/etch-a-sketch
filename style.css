@@ -11,10 +11,6 @@ body {
   align-items: center;
 }
 
-.buttons {
-  display: flex;
-}
-
 #clear,
 #resize {
   margin: 1rem;

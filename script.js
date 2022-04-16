@@ -6,13 +6,12 @@ const resizeBtn = document.querySelector('#resize');
 const colorPicker = document.querySelector("#colorPicker");
 const wrapper = document.querySelector('.colorPicker-wrapper');
 
-let gridSize = 16;
-let option = 'mouseover';
-
+squares.setAttribute('oncontextmenu', 'return false');
+let gridSize = 12;
 let scale = window.innerWidth;
 
 if (scale <= 550 && scale > 440) {
-  gridSize = 10;
+  gridSize = 8;
 }
 else if (scale <= 440) {
   gridSize = 6;
@@ -34,7 +33,7 @@ let generateSquares = (size) => {
 let fillWithColor = (color) => {
   squares.childNodes.forEach(element => {
     let bgColor = '';
-    let add = 51;
+    let add = 102;
     let addHex = '';
 
     element.addEventListener('mouseover', (e) => {
@@ -49,13 +48,13 @@ let fillWithColor = (color) => {
 
 let removeColor = () => {
   squares.childNodes.forEach(element => {
-    element.addEventListener('dblclick', (e) => e.target.style = 'background-color: white;');
+    element.addEventListener('contextmenu', (e) => e.target.style = 'background-color: #d6d6d6;');
   });
 }
 
 let clearSketchpad = () => {
   squares.childNodes.forEach(element => {
-    element.style = 'background-color: white;';
+    element.style = 'background-color: #d6d6d6;';
   });
 }
 

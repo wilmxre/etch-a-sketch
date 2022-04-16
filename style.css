@@ -5,10 +5,11 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: #333533;
 }
 
@@ -29,7 +30,6 @@ body {
   height: 2.5rem;
   border-radius: 50%;
   cursor: pointer;
-
 }
 
 #colorPicker {
@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   --contentSize: 81vh;
-  --size: 16;
+  --size: 12;
 }
 
 .squares {
@@ -74,6 +74,15 @@ body {
   border: 1px solid #242423;
 }
 
+.left-click {
+  color: #d6d6d6;
+  font-style: italic;
+  display: flex;
+  justify-items: end;
+  margin-top: .4rem;
+  margin-left: 2rem;
+}
+
 @media screen and (max-width: 720px) {
   .container {
     --contentSize: 60vh;
@@ -83,7 +92,11 @@ body {
 @media screen and (max-width: 550px) {
   .container {
     --contentSize: 50vh;
-    --size: 10;
+    --size: 8;
+  }
+
+  .top-section {
+    flex-direction: column;
   }
 }
 

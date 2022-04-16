@@ -3,10 +3,20 @@ const squares = document.createElement('div');
 squares.classList.add('squares');
 const clearBtn = document.querySelector('#clear');
 const resizeBtn = document.querySelector('#resize');
-const colorPicker = document.getElementById("colorPicker");
+const colorPicker = document.querySelector("#colorPicker");
+const wrapper = document.querySelector('.colorPicker-wrapper');
 
 let gridSize = 16;
 let option = 'mouseover';
+
+let scale = window.innerWidth;
+
+if (scale <= 550 && scale > 440) {
+  gridSize = 10;
+}
+else if (scale <= 440) {
+  gridSize = 6;
+}
 
 let generateSquares = (size) => {
   for (let i = 0; i < size; i++) {
@@ -59,18 +69,25 @@ let resizeSketchpad = () => {
   }
   squares.textContent = '';
   container.style = `--size: ${gridSize}`;
+
   generateSquares(gridSize);
   setColor();
 }
 
-function setColor() {
+setColor = () => {
+  wrapper.style.backgroundColor = colorPicker.value;
   fillWithColor(colorPicker.value);
 }
+
+triggerEvent = () => wrapper.addEventListener('click', () => {
+  colorPicker.click();
+});
 
 window.onload = () => {
   container.appendChild(generateSquares(gridSize));
   setColor();
   removeColor();
+  triggerEvent();
 
   colorPicker.addEventListener("input", setColor);
   clearBtn.addEventListener('click', clearSketchpad);

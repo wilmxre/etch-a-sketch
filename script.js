@@ -36,7 +36,7 @@ let fillWithColor = (color) => {
     let add = 102;
     let addHex = '';
 
-    element.addEventListener('mouseover', (e) => {
+    element.addEventListener('click', (e) => {
       addHex = add.toString(16);
       bgColor = color.concat(addHex);
       e.target.style = `background-color: ${bgColor};`;
@@ -71,6 +71,7 @@ let resizeSketchpad = () => {
 
   generateSquares(gridSize);
   setColor();
+  removeColor();
 }
 
 setColor = () => {

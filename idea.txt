@@ -1,0 +1,6 @@
+make a game, where one person draws something in like a 5 by 5 canvas and the
+other person has to guess that drawing.
+the drawer has to use 10 squares.
+the squares of the drawing have to connect with each other (by side not corners)
+the guesser has 5 guesses.
+if the guesser has guessed a correct square it becomes green, if it was right next to it, then yellow, if not then red.

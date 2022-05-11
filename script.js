@@ -7,7 +7,7 @@ const colorPicker = document.querySelector("#colorPicker");
 const wrapper = document.querySelector('.colorPicker-wrapper');
 
 squares.setAttribute('oncontextmenu', 'return false');
-let gridSize = 12;
+let gridSize = 5;
 let scale = window.innerWidth;
 
 if (scale <= 550 && scale > 440) {
@@ -36,7 +36,7 @@ let fillWithColor = (color) => {
     let add = 102;
     let addHex = '';
 
-    element.addEventListener('click', (e) => {
+    element.addEventListener('mouseover', (e) => {
       addHex = add.toString(16);
       bgColor = color.concat(addHex);
       e.target.style = `background-color: ${bgColor};`;
